@@ -2,6 +2,7 @@ import { Application } from "express";
 import { Config } from ".";
 import app from "../app";
 import logger from "./logger";
+import makeDatabaseConnection from "./database";
 
 class ApplicationServer {
   public app: Application;
@@ -12,8 +13,9 @@ class ApplicationServer {
     this.PORT = port ?? this.PORT;
   }
 
-  start() {
+  async start() {
     try {
+      await makeDatabaseConnection();
       this.app.listen(this.PORT, () => {
         console.log(`Server started on port ${this.PORT}`);
         logger.info(`Server started on port ${this.PORT}`);
