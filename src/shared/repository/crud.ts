@@ -13,6 +13,22 @@ class CurdRepository {
       throw new Error(error);
     }
   }
+
+  async getById(id: string) {
+    try {
+      return await this.model.findById(id);
+    } catch (error: any) {
+      throw new Error(error);
+    }
+  }
+
+  async FindByFeild(feild: any) {
+    try {
+      return await this.model.findOne(feild);
+    } catch (error: any) {
+      throw new Error(error);
+    }
+  }
 }
 
 export default CurdRepository;

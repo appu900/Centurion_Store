@@ -11,6 +11,7 @@ export default async function makeDatabaseConnection() {
     console.log("Connected to database");
     logger.info("Connected to database");
   } catch (error) {
+    console.log(`Error connecting to database: ${error}`);
     logger.error(`Error connecting to database: ${error}`);
     process.exit(1);
   }

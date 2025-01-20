@@ -1,7 +1,7 @@
 import express, { Request, Response, NextFunction } from "express";
 import { HttpError } from "http-errors";
 import logger from "./config/logger";
-import { handleCreateUser } from "./domain/user/userHandler";
+import UserRouter from "./domain/user/user.routes";
 
 const app = express();
 
@@ -11,7 +11,7 @@ app.get("/ping", (req, res) => {
   res.send("centurion store server pinged");
 });
 
-app.post("/users", handleCreateUser);
+app.use("/api/v1/users", UserRouter);
 
 app.use((err: HttpError, req: Request, res: Response, next: NextFunction) => {
   logger.error(err.message);
