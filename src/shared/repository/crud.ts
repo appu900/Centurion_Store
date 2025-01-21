@@ -29,6 +29,13 @@ class CurdRepository {
       throw new Error(error);
     }
   }
+  async findAll() {
+    try {
+      return await this.model.find();
+    } catch (error: any) {
+      throw new Error(error);
+    }
+  }
 }
 
 export default CurdRepository;
