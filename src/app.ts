@@ -3,6 +3,7 @@ import { HttpError } from "http-errors";
 import logger from "./config/logger";
 import UserRouter from "./domain/user/user.routes";
 import CenterRouter from "./domain/reserch_centers/center.routes";
+import AdminRouter from "./domain/admin/admin.routes";
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.get("/ping", (req, res) => {
 
 app.use("/api/v1/users", UserRouter);
 app.use("/api/v1/centers", CenterRouter);
+app.use("/api/v1/admin", AdminRouter);
 
 app.use((err: HttpError, req: Request, res: Response, next: NextFunction) => {
   logger.error(err.message);
